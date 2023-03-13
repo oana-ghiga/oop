@@ -12,21 +12,22 @@ namespace std {
     Sort::Sort() {}
 
     Sort::Sort(std::initializer_list<int> values)
-            : elements(values) {}
+            : elements(values) {}//copy the list
 
     Sort::Sort(const std::vector<int>& values)
-            : elements(values) {}
+            : elements(values) {} //copy the vector
 
     Sort::Sort(int n, int min, int max)
     {
         for (int i = 0; i < n; ++i)
-            elements.push_back(rand() % (max - min + 1) + min);
+            elements.push_back(rand() % (max - min + 1) + min); //random values to populate the vector
     }
 
-    Sort::Sort(const std::string& values)
+    Sort::Sort(const std::string& values) //constr that a list from a string separated by comma
+
     {
-        std::istringstream iss(values);
-        std::string token;
+        std::istringstream iss(values);//read each element from the string and add to the vector
+        std::string token; //each element from the string
         while (std::getline(iss, token, ','))
             elements.push_back(std::stoi(token));
     }
@@ -48,30 +49,30 @@ namespace std {
             int tmp = elements[i];
             while (j >= 0 && ((ascendent && elements[j] > tmp) || (!ascendent && elements[j] < tmp))) {
                 elements[j + 1] = elements[j];
-                --j;
+                --j; //move everything greater to the right
             }
             elements[j + 1] = tmp;
         }
     }
 
-    int Sort::partition(int low, int high, bool ascendent)
+    int Sort::partition(int low, int high, bool ascendent)//choose the last element as pivot
     {
         int pivot = elements[high];
         int i = low - 1;
         for (int j = low; j <= high - 1; j++) {
             if ((ascendent && elements[j] <= pivot) || (!ascendent && elements[j] >= pivot)) {
                 i++;
-                swap(elements[i], elements[j]);
+                swap(elements[i], elements[j]); //move the elements smaller than the pivot to the left
             }
         }
         swap(elements[i + 1], elements[high]);
         return i + 1;
     }
 
-    void Sort::quicksort(int low, int high, bool ascendent)
+    void Sort::quicksort(int low, int high, bool ascendent) //recursive function  that sorts the elements between low and high in ascending order
     {
         if (low < high) {
-            int pi = partition(low, high, ascendent);
+            int pi = partition(low, high, ascendent);//partitioning index
             quicksort(low, pi - 1, ascendent);
             quicksort(pi + 1, high, ascendent);
         }
