@@ -5,14 +5,14 @@
 #include <iostream>
 
 int main() {
-    std::Sort s1{10, 5, 50};
+    std::Sort s1{3, 5, 79};
     std::cout << "s1: ";
     s1.Print();
-    std::Sort s2{4, 6, 2, 9, 1};
+    std::Sort s2{5, 61, 8, 9, 1, 3};
     std::cout << "s2: ";
     s2.Print();
 
-    std::vector<int> v{8, 7, 6, 5, 4, 3, 2, 1};
+    std::vector<int> v{3, 7, 9, 5, 1, 11, 69, 37};
     std::Sort s3(v);
     std::cout << "s3: ";
     s3.Print();
