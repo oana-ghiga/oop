@@ -20,15 +20,15 @@ private:
 
 public:
 
-    explicit Number                      (const char * value, int base = 10) noexcept(false);
-    explicit Number                      (int  value, int base = 10) noexcept;
+    explicit Number(const char * value, int base = 10) noexcept(false);
+    explicit Number(int  value, int base = 10) noexcept;
 
-    Number                      (Number const &obj) noexcept;     ///copy ctor
-    Number                      (Number &&obj) noexcept;  ///move ctor
+    Number (Number const &obj) noexcept; ///copy ctor
+    Number(Number &&obj) noexcept;  ///move ctor
 
-    ~Number                     () {delete [] digits;}
+    ~Number() {delete [] digits;}
 
-    void switchBase             (int new_base) noexcept;
+    void switchBase(int new_base) noexcept;
 
     inline void print () const noexcept {std::cout << digits << '\n';}
 
